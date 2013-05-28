@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Mac OS Media File Scanner' target in the 'Mac OS Media File Scanner' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
