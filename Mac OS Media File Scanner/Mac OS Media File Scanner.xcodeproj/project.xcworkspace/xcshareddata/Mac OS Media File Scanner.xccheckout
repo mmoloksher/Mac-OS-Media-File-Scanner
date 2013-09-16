@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E5ABDF9A-CA26-475F-9771-8580ACF413EB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Mac OS Media File Scanner</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E5BEBC0F-1797-4F83-986F-7052AC370982</key>
+		<string>https://github.com/mmoloksher/Mac-OS-Media-File-Scanner.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Mac OS Media File Scanner/Mac OS Media File Scanner.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E5BEBC0F-1797-4F83-986F-7052AC370982</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mmoloksher/Mac-OS-Media-File-Scanner.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E5BEBC0F-1797-4F83-986F-7052AC370982</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E5BEBC0F-1797-4F83-986F-7052AC370982</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Mac-OS-Media-File-Scanner</string>
+		</dict>
+	</array>
+</dict>
+</plist>

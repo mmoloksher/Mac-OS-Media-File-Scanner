@@ -11,11 +11,13 @@
 @interface MediaLibraryPicker : NSViewController
 {
     NSDictionary *tracksDictionary;
+    NSInvocationOperation *backgroundOperation;
 }
 
 
 @property (strong) IBOutlet NSMatrix *libraryPicker;
 @property (strong) IBOutlet NSTextField *songsFoundLabel;
+@property (weak) IBOutlet NSProgressIndicator *spinningCircle;
 
 
 - (IBAction)libraryPicked:(id)sender;

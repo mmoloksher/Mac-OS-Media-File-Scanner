@@ -14,6 +14,8 @@
 }
 
 @property (strong) IBOutlet NSProgressIndicator *progressBar;
+@property (strong) IBOutlet NSButton *nextButton;
 
+- (IBAction)viewTrackListingTable:(id)sender;
 
 @end

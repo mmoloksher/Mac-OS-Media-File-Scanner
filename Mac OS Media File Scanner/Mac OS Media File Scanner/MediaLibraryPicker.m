@@ -7,6 +7,7 @@
 //
 
 #import "MediaLibraryPicker.h"
+#import <ScriptingBridge/SBApplication.h>
 #import "ITunesScan.h"
 #import "FileSystemScanner.h"
 #import "Global.h"
@@ -17,7 +18,7 @@
 @end
 
 @implementation MediaLibraryPicker
-@synthesize libraryPicker, songsFoundLabel;
+@synthesize libraryPicker, songsFoundLabel, spinningCircle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,12 +32,29 @@
 
 - (void) awakeFromNib{
     
-    [Global instance].mediaLibraryTracks = [ITunesScan scanItunesLibrary];
-    [self displaySongsAmount];
+    
+    backgroundOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(scanItunesMedia) object:nil];
+    [backgroundOperation setCompletionBlock:^{
+        NSLog(@"iTunes Scan Finished");
+        [self scanProcessFinished];
+    }];
+    [[Global instance].globalOperationQueue addOperation:backgroundOperation];
     
 }
 
+- (void)scanItunesMedia
+{
+    [self scanProcessStarted];
+    [[ITunesScan instance] scanItunesLibrary];
+}
 
+- (void)scanMediaFolder
+{
+    [self scanProcessStarted];
+    
+    //Looking for files in Music Folder
+    [FileSystemScanner scanFileSystem:[NSString stringWithFormat:@"%@Music/", [Global instance].userDirectory]];
+}
 
 - (IBAction)libraryPicked:(id)sender
 {
@@ -48,17 +66,30 @@
         NSLog(@"iTunes Library Selected");
         [Global instance].userPickedMediaLibrary = ITUNES_LIBRARY;
         
-        // Look for music in the iTunes XML File
-        [Global instance].mediaLibraryTracks = [ITunesScan scanItunesLibrary];
-        
+        backgroundOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(scanItunesMedia) object:nil];
+        [backgroundOperation setCompletionBlock:^{
+            NSLog(@"iTunes Scan Finished");
+            [self scanProcessFinished];
+        }];
+        [[Global instance].globalOperationQueue addOperation:backgroundOperation];
     }
     else if (radioButton.tag == MUSIC_LIBRARY)
     {
         NSLog(@"Music Folder Library Selected");
         [Global instance].userPickedMediaLibrary = MUSIC_LIBRARY;
         
+        
+        backgroundOperation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(scanMediaFolder) object:nil];
+        [backgroundOperation setCompletionBlock:^{
+            NSLog(@"Media Scan Finished");
+            [self scanProcessFinished];
+        }];
+        
+        [[Global instance].globalOperationQueue addOperation:backgroundOperation];
+        
+        
         //Looking for files in Music Folder
-        [Global instance].mediaLibraryTracks = [FileSystemScanner scanFileSystem:[NSString stringWithFormat:@"%@Music/", [Global instance].userDirectory]];
+        //[Global instance].mediaLibraryTracks = [FileSystemScanner scanFileSystem:[NSString stringWithFormat:@"%@Music/", [Global instance].userDirectory]];
     }
     else
     {
@@ -91,12 +122,12 @@
                  dispatch_queue_t fileScannerQueue = dispatch_queue_create("com.mmc.fileScannerQueue", NULL);
                  dispatch_async(fileScannerQueue,
                                 ^{
-                                    [Global instance].mediaLibraryTracks = [FileSystemScanner scanFileSystem:[[files objectAtIndex:0] path]];
+                                   [FileSystemScanner scanFileSystem:[[files objectAtIndex:0] path]];
                                     
                                     dispatch_sync(dispatch_get_main_queue(),
                                                   ^{
                                                       NSLog(@"Scan Finished");
-                                                      [self displaySongsAmount];
+                                                      [self scanProcessFinished];
                                                   });
                                 });
                  
@@ -116,6 +147,20 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ProcessingView" object:self];
     
 }
+
+-(void)scanProcessStarted
+{
+    [spinningCircle startAnimation:self];
+    [libraryPicker setEnabled:NO];
+     songsFoundLabel.stringValue = @"Scanning your media library...";
+}
+-(void)scanProcessFinished
+{
+    [spinningCircle stopAnimation:self];
+    [libraryPicker setEnabled:YES];
+    [self displaySongsAmount];
+}
+
 
 -(void)displaySongsAmount
 {

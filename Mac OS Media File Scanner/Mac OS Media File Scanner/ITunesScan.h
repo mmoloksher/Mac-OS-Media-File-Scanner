@@ -7,8 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "iTunes.h"
 
 @interface ITunesScan : NSObject
+{
+    
+    iTunesFileTrack * track;
+    iTunesApplication *iTunes;
+    iTunesSource *library;
+    iTunesUserPlaylist *playlist;
+    
+    NSMutableArray *foundTracks;
+    
+}
 
-+ (NSDictionary *)scanItunesLibrary;
+- (void)scanItunesLibrary;
++ (ITunesScan *)instance;
+
 @end

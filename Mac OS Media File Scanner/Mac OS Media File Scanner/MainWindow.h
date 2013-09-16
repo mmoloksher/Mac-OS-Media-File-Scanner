@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "MediaLibraryPicker.h"
 #import "ProcessPage.h"
+#import "TracksListing.h"
 
 @interface MainWindow : NSWindowController
 {
     MediaLibraryPicker *libraryPicker;
     ProcessPage *processPageVC;
+    TracksListing *tracksListingPageVC;
 
 }
 @property (strong) IBOutlet NSView *mainView;

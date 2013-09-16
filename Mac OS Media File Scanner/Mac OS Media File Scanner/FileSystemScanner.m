@@ -16,9 +16,11 @@
 
 @implementation FileSystemScanner
 
-+ (NSDictionary *)scanFileSystem:(NSString *)sourcePath
++ (void)scanFileSystem:(NSString *)sourcePath
 {
     NSLog(@"scanFileSystem");
+    
+    [[Global instance].mediaLibraryTracks removeAllObjects];
     
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSURL *directoryURL = [[NSURL alloc] initFileURLWithPath:sourcePath isDirectory:YES];
@@ -38,7 +40,6 @@
                                          }];
     
     
-    NSMutableDictionary *tracksDict = [[NSMutableDictionary alloc] init];
     NSNumber *count = 0;
         
     for (NSURL *url in enumerator)
@@ -61,11 +62,10 @@
             [track setValue:[[url description] pathExtension] forKey:@"Name"];
             
             
-            [tracksDict setValue:track forKey:[count stringValue]];
+            [[Global instance].mediaLibraryTracks addObject:track];
         }
     }
         
-    return tracksDict;
 }
 
 @end

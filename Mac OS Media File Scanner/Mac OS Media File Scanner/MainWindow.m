@@ -44,6 +44,11 @@
                                              selector:@selector(showProcessingView)
                                                  name:@"ProcessingView"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showTrackListingView)
+                                                 name:@"TrackListingView"
+                                               object:nil];
 
 }
 
@@ -55,6 +60,15 @@
     
     processPageVC = [[ProcessPage alloc] initWithNibName:@"ProcessPage" bundle:nil];
     [mainView addSubview:processPageVC.view];
+}
+
+-(void)showTrackListingView
+{
+    NSLog(@"showTrackListingView");
+    [processPageVC.view removeFromSuperview];
+    
+    tracksListingPageVC = [[TracksListing alloc] initWithNibName:@"TracksListing" bundle:nil];
+    [mainView addSubview:tracksListingPageVC.view];
 }
 
 @end

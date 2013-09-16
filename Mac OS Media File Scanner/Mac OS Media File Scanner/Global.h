@@ -9,10 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface Global : NSObject
+{
+    NSOperationQueue *globalOperationQueue;
+}
+
+@property (nonatomic, retain) NSOperationQueue *globalOperationQueue;
 
 @property (nonatomic, retain) NSWindowController *mainWindowController;
 @property (nonatomic, retain) NSArray *validExtensions;
-@property (nonatomic, retain) NSDictionary *mediaLibraryTracks;
+@property (nonatomic, retain) NSMutableArray *mediaLibraryTracks;
 @property (nonatomic) NSInteger userPickedMediaLibrary;
 @property (nonatomic, retain) NSString *userDirectory;
 

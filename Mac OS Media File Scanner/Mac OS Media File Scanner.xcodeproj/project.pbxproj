@@ -26,8 +26,11 @@
 		0EF148B9174FFBBF008DEDCD /* FileMD5Hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 0EF148B8174FFBBF008DEDCD /* FileMD5Hash.c */; };
 		0EF148C417500142008DEDCD /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF148C217500142008DEDCD /* MainWindow.m */; };
 		0EF148C517500142008DEDCD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EF148C317500142008DEDCD /* MainWindow.xib */; };
+		5E970F4D17E691280042A487 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E970F4C17E691280042A487 /* ScriptingBridge.framework */; };
 		E02EAF2A175312D300D7925B /* ProcessPage.m in Sources */ = {isa = PBXBuildFile; fileRef = E02EAF28175312D300D7925B /* ProcessPage.m */; };
 		E02EAF2B175312D300D7925B /* ProcessPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02EAF29175312D300D7925B /* ProcessPage.xib */; };
+		E05984F21755B19800041246 /* TracksListing.m in Sources */ = {isa = PBXBuildFile; fileRef = E05984F01755B19800041246 /* TracksListing.m */; };
+		E05984F31755B19800041246 /* TracksListing.xib in Resources */ = {isa = PBXBuildFile; fileRef = E05984F11755B19800041246 /* TracksListing.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,9 +71,14 @@
 		0EF148C117500141008DEDCD /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		0EF148C217500142008DEDCD /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		0EF148C317500142008DEDCD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		5E970F4C17E691280042A487 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		5E970F4E17E692440042A487 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		E02EAF27175312D300D7925B /* ProcessPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessPage.h; sourceTree = "<group>"; };
 		E02EAF28175312D300D7925B /* ProcessPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessPage.m; sourceTree = "<group>"; };
 		E02EAF29175312D300D7925B /* ProcessPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessPage.xib; sourceTree = "<group>"; };
+		E05984EF1755B19800041246 /* TracksListing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksListing.h; sourceTree = "<group>"; };
+		E05984F01755B19800041246 /* TracksListing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksListing.m; sourceTree = "<group>"; };
+		E05984F11755B19800041246 /* TracksListing.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TracksListing.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E970F4D17E691280042A487 /* ScriptingBridge.framework in Frameworks */,
 				0EF14870174FC1F7008DEDCD /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +114,7 @@
 		0EF1486E174FC1F7008DEDCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E970F4C17E691280042A487 /* ScriptingBridge.framework */,
 				0EF1486F174FC1F7008DEDCD /* Cocoa.framework */,
 				0EF14871174FC1F7008DEDCD /* Other Frameworks */,
 			);
@@ -157,6 +167,8 @@
 				0EF148C217500142008DEDCD /* MainWindow.m */,
 				E02EAF27175312D300D7925B /* ProcessPage.h */,
 				E02EAF28175312D300D7925B /* ProcessPage.m */,
+				E05984EF1755B19800041246 /* TracksListing.h */,
+				E05984F01755B19800041246 /* TracksListing.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -164,6 +176,7 @@
 		0EF14890174FC4C9008DEDCD /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				E05984F11755B19800041246 /* TracksListing.xib */,
 				E02EAF29175312D300D7925B /* ProcessPage.xib */,
 				0EF14884174FC1FB008DEDCD /* MainMenu.xib */,
 				0EF148C317500142008DEDCD /* MainWindow.xib */,
@@ -175,6 +188,7 @@
 		0EF1489B174FEF98008DEDCD /* File System Scanners */ = {
 			isa = PBXGroup;
 			children = (
+				5E970F4E17E692440042A487 /* iTunes.h */,
 				0EF1489C174FEFC3008DEDCD /* ITunesScan.h */,
 				0EF1489D174FEFC3008DEDCD /* ITunesScan.m */,
 				0EF1489E174FEFC3008DEDCD /* FileSystemScanner.h */,
@@ -284,6 +298,7 @@
 				0EF1489A174FED9B008DEDCD /* MediaLibraryPicker.xib in Resources */,
 				0EF148C517500142008DEDCD /* MainWindow.xib in Resources */,
 				E02EAF2B175312D300D7925B /* ProcessPage.xib in Resources */,
+				E05984F31755B19800041246 /* TracksListing.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +323,7 @@
 				0EF148B9174FFBBF008DEDCD /* FileMD5Hash.c in Sources */,
 				0EF148C417500142008DEDCD /* MainWindow.m in Sources */,
 				E02EAF2A175312D300D7925B /* ProcessPage.m in Sources */,
+				E05984F21755B19800041246 /* TracksListing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

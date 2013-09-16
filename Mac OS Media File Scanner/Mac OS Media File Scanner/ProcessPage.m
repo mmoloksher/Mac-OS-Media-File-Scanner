@@ -16,7 +16,7 @@
 @end
 
 @implementation ProcessPage
-@synthesize progressBar;
+@synthesize progressBar, nextButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +45,7 @@
                          withCompletionBlock:^(void)
          {
              NSLog(@"addTracksToDB Finished");
+             [nextButton setHidden:NO];
          }];
         
         
@@ -55,4 +56,9 @@
 }
 
 
+- (IBAction)viewTrackListingTable:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TrackListingView" object:self];
+
+}
 @end

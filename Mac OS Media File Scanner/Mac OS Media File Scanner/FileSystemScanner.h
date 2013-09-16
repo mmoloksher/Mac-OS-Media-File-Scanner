@@ -12,6 +12,6 @@
 
 
 
-+ (NSDictionary *)scanFileSystem:(NSString *)sourcePath;
++ (void)scanFileSystem:(NSString *)sourcePath;
 
 @end
