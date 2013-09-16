@@ -9,7 +9,10 @@
 #import "FileSystemScanner.h"
 #import "Utility.h"
 #import "Global.h"
+#import "AppDelegate.h"
+#import "Audio.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 #import "FileMD5Hash.h"
 #import "CoreDataUtilities.h"
 
@@ -21,6 +24,11 @@
     NSLog(@"scanFileSystem");
     
     [[Global instance].mediaLibraryTracks removeAllObjects];
+    
+    AppDelegate *delegate = [[NSApplication sharedApplication] delegate];
+    NSManagedObjectContext *moc = [delegate managedObjectContext];
+    NSFileManager * fm = [NSFileManager defaultManager];
+
     
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSURL *directoryURL = [[NSURL alloc] initFileURLWithPath:sourcePath isDirectory:YES];
@@ -57,12 +65,35 @@
             
             count = [NSNumber numberWithInt:[count intValue]+1];
             
-            NSMutableDictionary *track = [[NSMutableDictionary alloc] init];
-            [track setValue:[url description] forKey:@"Location"];
-            [track setValue:[[url description] pathExtension] forKey:@"Name"];
+            NSEntityDescription *description = [NSEntityDescription entityForName:@"Audio" inManagedObjectContext:moc];
+            Audio *song = [[Audio alloc] initWithEntity:description insertIntoManagedObjectContext:nil];
             
+            song.title = [[url description] pathExtension];
+            song.itunesURL = [Utility normalizeFilePath:[url description]];
             
-            [[Global instance].mediaLibraryTracks addObject:track];
+            // Grab ID3 data from mp3 file
+            NSURL *url = [[NSURL alloc] initFileURLWithPath:song.itunesURL];
+            AVAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
+            
+            NSArray *metadata = [asset commonMetadata];
+            
+            for (AVMetadataItem * item in metadata )
+            {
+                NSString *key = [item commonKey];
+                NSString *value = [item stringValue];
+                
+                //NSLog(@"key = %@, value = %@", key, value);
+                
+                if([key isEqualToString:@"title"])
+                {
+                    song.title = value;
+                }
+                
+            }
+
+            
+            [[Global instance].mediaLibraryTracks addObject:song];
+            
         }
     }
         

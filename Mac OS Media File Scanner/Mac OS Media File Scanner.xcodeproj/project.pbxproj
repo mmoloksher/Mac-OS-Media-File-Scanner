@@ -27,6 +27,8 @@
 		0EF148C417500142008DEDCD /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF148C217500142008DEDCD /* MainWindow.m */; };
 		0EF148C517500142008DEDCD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EF148C317500142008DEDCD /* MainWindow.xib */; };
 		5E970F4D17E691280042A487 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E970F4C17E691280042A487 /* ScriptingBridge.framework */; };
+		5E970F5017E6C12F0042A487 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E970F4F17E6C12F0042A487 /* AudioToolbox.framework */; };
+		5E970F5217E6C15B0042A487 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E970F5117E6C15B0042A487 /* AVFoundation.framework */; };
 		E02EAF2A175312D300D7925B /* ProcessPage.m in Sources */ = {isa = PBXBuildFile; fileRef = E02EAF28175312D300D7925B /* ProcessPage.m */; };
 		E02EAF2B175312D300D7925B /* ProcessPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02EAF29175312D300D7925B /* ProcessPage.xib */; };
 		E05984F21755B19800041246 /* TracksListing.m in Sources */ = {isa = PBXBuildFile; fileRef = E05984F01755B19800041246 /* TracksListing.m */; };
@@ -73,6 +75,8 @@
 		0EF148C317500142008DEDCD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		5E970F4C17E691280042A487 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		5E970F4E17E692440042A487 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
+		5E970F4F17E6C12F0042A487 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5E970F5117E6C15B0042A487 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E02EAF27175312D300D7925B /* ProcessPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessPage.h; sourceTree = "<group>"; };
 		E02EAF28175312D300D7925B /* ProcessPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessPage.m; sourceTree = "<group>"; };
 		E02EAF29175312D300D7925B /* ProcessPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessPage.xib; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E970F5217E6C15B0042A487 /* AVFoundation.framework in Frameworks */,
+				5E970F5017E6C12F0042A487 /* AudioToolbox.framework in Frameworks */,
 				5E970F4D17E691280042A487 /* ScriptingBridge.framework in Frameworks */,
 				0EF14870174FC1F7008DEDCD /* Cocoa.framework in Frameworks */,
 			);
@@ -114,6 +120,8 @@
 		0EF1486E174FC1F7008DEDCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E970F5117E6C15B0042A487 /* AVFoundation.framework */,
+				5E970F4F17E6C12F0042A487 /* AudioToolbox.framework */,
 				5E970F4C17E691280042A487 /* ScriptingBridge.framework */,
 				0EF1486F174FC1F7008DEDCD /* Cocoa.framework */,
 				0EF14871174FC1F7008DEDCD /* Other Frameworks */,

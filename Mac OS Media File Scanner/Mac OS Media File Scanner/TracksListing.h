@@ -9,6 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TracksListing : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
+{
+    NSArray *tracks;
+}
 
 @property (strong) IBOutlet NSTableView *tracksListingTable;
 

@@ -17,10 +17,18 @@
 // validates the raw path of files/dirs to be used for MacOSX SDK functions
 +(NSString *)normalizeFilePath:(NSString *)filePath
 {
-    NSString *libraryPathEncoded = [[filePath componentsSeparatedByString:@"file://localhost"] objectAtIndex:1];
-    NSString *libraryPathDecoded = [libraryPathEncoded stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSArray *pathParts = [filePath componentsSeparatedByString:@"file://localhost"];
     
-    return libraryPathDecoded;
+    if([pathParts count] > 1)
+    {
+        NSString *libraryPathEncoded = [[filePath componentsSeparatedByString:@"file://localhost"] objectAtIndex:1];
+        NSString *libraryPathDecoded = [libraryPathEncoded stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        return libraryPathDecoded;
+        
+    }
+    else
+        return filePath;
 }
 
 +(NSString *)getFileName:(NSString *)filePath

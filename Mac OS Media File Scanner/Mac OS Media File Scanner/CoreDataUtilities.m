@@ -28,7 +28,7 @@ static CoreDataUtilities *instance = Nil;
 }
 
 
--(void)addTracksToDB:(NSDictionary *)tracksDictionary
+-(void)addTracksToDB:(NSMutableArray *)tracksDictionary
             withView:(NSView *)mainView
     withProgressView:(NSProgressIndicator *)progressView
  withCompletionBlock:(void(^)(void))completionBlock
@@ -46,11 +46,10 @@ static CoreDataUtilities *instance = Nil;
     [progressView setDoubleValue:50.0];
     
     // Going Through Each Track
-    for (id track in tracksDictionary)
+    for (Audio * trackDict in tracksDictionary)
     {
-        NSDictionary *trackDict = [tracksDictionary objectForKey:track];
         
-        NSLog(@"Song: %@", [trackDict objectForKey:@"Name"]);
+        NSLog(@"Song: %@", trackDict.title);
         
         
         songCount++;
@@ -58,12 +57,12 @@ static CoreDataUtilities *instance = Nil;
         
         // Update View with Information
         [progressView setDoubleValue:parsePercentage];
-        [progressBarInfo setStringValue:[NSString stringWithFormat:@"Processing File: %@",[Utility getFileName:[trackDict objectForKey:@"Location"]]]];
+        [progressBarInfo setStringValue:[NSString stringWithFormat:@"Processing File: %@",[Utility getFileName:trackDict.itunesURL]]];
         
         
         // INIT
-        NSString * trackDict_trackName = [trackDict objectForKey:@"Name"];
-        NSString * trackDict_location = [trackDict objectForKey:@"Location"];
+        NSString * trackDict_trackName = trackDict.title;
+        NSString * trackDict_location = trackDict.itunesURL;
         
         
         /* === SONGS === */
@@ -87,7 +86,7 @@ static CoreDataUtilities *instance = Nil;
             Audio *audioObj = [[Audio alloc] initWithEntity:AudioEntity insertIntoManagedObjectContext:[delegate managedObjectContext]];
             [audioObj setTitle:audioName];
             [audioObj setMd5:audioCode];
-            [audioObj setItunesURL:[trackDict objectForKey:@"Location"]];
+            [audioObj setItunesURL:trackDict.title];
         }
     }
     
@@ -100,7 +99,7 @@ static CoreDataUtilities *instance = Nil;
     
     
     // Update View with Information
-    [progressView setDoubleValue:0.0];
+    [progressView setDoubleValue:100.0];
     [progressBarInfo setStringValue:[NSString stringWithFormat:@"Finished Processing Files"]];
     NSLog(@"+++ addTracksToDB ENDED");
     
